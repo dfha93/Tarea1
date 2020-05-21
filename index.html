@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>Galeria de imagenes</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#">Prueba</a></li>
+                <li><a href="#">Prueba</a></li>
+                <li><a href="#">Prueba</a></li>
+                <li><a href="#">Prueba</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Este es un documento web de prueba</h1>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. In error voluptas, ut voluptatum ad similique, aspernatur odit porro quae officia voluptatibus nostrum ea? Iste vitae, similique quasi natus perferendis pariatur.
+        </p>
+
+        <div id="images">
+
+        </div>
+
+    </main>
+
+    <aside>
+        <h3>Aspectos importante en la web</h3>
+        <ol>
+            <li>Estructura</li>
+            <li>Diseño</li>
+            <li>Ux</li>
+            <li>IU</li>
+        </ol>
+    </aside>
+
+    <footer>
+        <div class="up">
+            <p>Todos los derecho resevados</p>
+        </div>
+        <div class="down">
+            <p>Hecho con amor en latinoamerica</p>
+        </div>
+
+    </footer>
+
+
+    <script>
+            let images = document.getElementById("images")
+
+
+            fetch("https://picsum.photos/v2/list")
+            .then((response)=>{
+                return response.json()
+            })
+            .then((data)=>{
+                
+                let datos = ""
+                data.forEach((imagen)=>{
+                    
+                    datos += "<p>"+ imagen.id +"</p>"
+                    datos += "<p>"+ imagen.author +"</p>"
+                    datos += "<p><img src='"+ imagen.download_url +"' heigth='300' width='300'></p>"
+
+
+                })
+
+                images.innerHTML = datos;
+            })
+
+    </script>
+    
+</body>
+</html>
